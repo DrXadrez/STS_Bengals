@@ -1,7 +1,11 @@
 package com.cincinnati.entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Posicao implements Serializable {
 	
@@ -10,6 +14,8 @@ public class Posicao implements Serializable {
 	private String posicao;
 	private String abreviacao;
 	
+	@JsonIgnore
+	private List<Jogador> jogadores = new ArrayList<>();
 	public Posicao() {
 	}
 
@@ -43,7 +49,11 @@ public class Posicao implements Serializable {
 	public void setAbreviacao(String abreviacao) {
 		this.abreviacao = abreviacao;
 	}
-
+	
+	public List<Jogador> getJogadores() {
+		return jogadores;
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
